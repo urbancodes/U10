@@ -1,61 +1,54 @@
 package hospital.heap;
 
-public class ArrayListHeap extends AbstractBinaryHeap {
+import java.util.ArrayList;
+import hospital.patients.AbstractPatient;
+
+public class ArrayListHeap<T extends Comparable<T>> extends AbstractBinaryHeap<T>  {
+
+	ArrayList<T> arrayList = new ArrayList<T>();
+	
+	
 	
 	@Override
 	public int getSize() {
 		
-		if (top() != null) return calcSize(top(), 0); 
-		else return 0;
-
-	}
-	
-	
-	public int calcSize(T knot,int count) {
-/*		
-*		if getRightChildren != null count += 2
-*		else if getLeftChildren != count++
-*			else if there is marker calcSize(stageMarker)
-*				else return val
-*	set stageMarker on rightChild
-*	calcSize(leftChild)
-*/
-		return count;
+		return arrayList.size();
 	}
 
-	
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		if(arrayList.isEmpty()){return true;}
+		else{return false;}
 	}
 
 	@Override
 	protected boolean isHeap(int parentIndex, int childIndex) {
-		// TODO Auto-generated method stub
+		if(arrayList.get(parentIndex).compareTo(arrayList.get(childIndex)) <= 0){}
 		return false;
 	}
 
 	@Override
 	protected void swapNodes(int parentIndex, int childIndex) {
+		T temp = arrayList.get(parentIndex);
+		arrayList.set(parentIndex, arrayList.get(childIndex));
+		arrayList.set(childIndex, temp);
+		if (isHeap()) {}
+	}
+
+	@Override
+	public void push(T patient) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void push(Comparable element) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Comparable top() {
+	public T top() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Comparable pop() {
+	public T pop() {
 		// TODO Auto-generated method stub
 		return null;
 	}
